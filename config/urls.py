@@ -6,15 +6,13 @@ from django.urls import include, path, re_path
 from django.views import defaults as default_views
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import TemplateView
-from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
 from drf_yasg import openapi
 from drf_yasg.views import get_schema_view
 from rest_framework import permissions
 from rest_framework.authtoken.views import obtain_auth_token
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
-from geolocations.api.views import AddLocationResponse
-
+from geolocations.api.views import AddLocationResponse, AutomaticAddLocationResponse
 
 schema_view = get_schema_view(
    openapi.Info(
@@ -40,8 +38,8 @@ urlpatterns = [
     # User management
     path("users/", include("sofomo.users.urls", namespace="users")),
     path("accounts/", include("allauth.urls")),
-    path('token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
-    path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     re_path(
         r"^documentation/$",
         csrf_exempt(schema_view.with_ui("swagger", cache_timeout=0)),
@@ -63,9 +61,10 @@ urlpatterns += [
     # API base url
     path("api/", include("config.api_router")),
     # DRF auth token
-    path("auth-token/", obtain_auth_token),
+    path("api/auth-token/", obtain_auth_token),
 
-    path("api/locations/<str:ip_address>/new-location", AddLocationResponse.as_view()),
+    path("api/create-location/<str:ip_address>", AddLocationResponse.as_view()),
+    path("api/create-location", AutomaticAddLocationResponse.as_view()),
 ]
 
 if settings.DEBUG:
