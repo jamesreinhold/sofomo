@@ -5,7 +5,12 @@ from django.http.response import Http404
 from django.utils.translation import gettext_lazy as _
 from ipware.ip import get_client_ip
 from rest_framework import generics, status
-from rest_framework.mixins import DestroyModelMixin, ListModelMixin, RetrieveModelMixin
+from rest_framework.mixins import (
+    CreateModelMixin,
+    DestroyModelMixin,
+    ListModelMixin,
+    RetrieveModelMixin,
+)
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
@@ -21,10 +26,16 @@ User = get_user_model()
 
 
 class LocationViewSet(
+    CreateModelMixin,
     ListModelMixin,
     RetrieveModelMixin,
     DestroyModelMixin,
     GenericViewSet):
+    """
+    Create a Location (JSON)
+
+    This endpoint allows you to create a new location by passing IP as body
+    """
     serializer_class = LocationSerializer
     queryset = Location.objects.all()
     lookup_field = "ip_address"
