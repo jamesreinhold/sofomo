@@ -65,7 +65,7 @@ urlpatterns += [
     # DRF auth token
     path("auth-token/", obtain_auth_token),
 
-    path("api/locations/<str:ip_address>", AddLocationResponse.as_view()),
+    path("api/locations/<str:ip_address>/new-location", AddLocationResponse.as_view()),
 ]
 
 if settings.DEBUG:
