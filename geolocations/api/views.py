@@ -79,8 +79,8 @@ class LocationViewSet(
     serializer_class = LocationSerializer
     queryset = Location.objects.all()
     lookup_field = "ip_address"
-    # permission_classes = [IsAuthenticated]
-    permission_classes = [AllowAny]
+    permission_classes = [IsAuthenticated]
+    # permission_classes = [AllowAny]
     pagination_class = PageNumberPagination
 
     def get_object(self, queryset=None):
@@ -122,8 +122,8 @@ class LocationViewSet(
 
 
 class AddLocationResponse(generics.RetrieveAPIView):
-    # permission_classes = [IsAuthenticated]
-    permission_classes = [AllowAny]
+    permission_classes = [IsAuthenticated]
+    # permission_classes = [AllowAny]
     serializer_class = LocationSerializer
 
 
@@ -162,8 +162,8 @@ class AddLocationResponse(generics.RetrieveAPIView):
 
 
 class AutomaticAddLocationResponse(generics.RetrieveAPIView):
-    # permission_classes = [IsAuthenticated]
-    permission_classes = [AllowAny]
+    permission_classes = [IsAuthenticated]
+    # permission_classes = [AllowAny]
     serializer_class = LocationSerializer
 
     def get(self, request, *args, **kwargs):
