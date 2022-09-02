@@ -162,8 +162,8 @@ class AddLocationResponse(generics.RetrieveAPIView):
 
 
 class AutomaticAddLocationResponse(generics.RetrieveAPIView):
-    permission_classes = [IsAuthenticated]
-    # permission_classes = [AllowAny]
+    # permission_classes = [IsAuthenticated]
+    permission_classes = [AllowAny]
     serializer_class = LocationSerializer
 
     def get(self, request, *args, **kwargs):
