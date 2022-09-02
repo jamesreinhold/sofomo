@@ -34,8 +34,11 @@ class LocationViewSet(
     GenericViewSet):
     serializer_class = LocationSerializer
     queryset = Location.objects.all()
-    lookup_field = "ip"
+    lookup_field = "ip_address"
     permission_classes = [AllowAny]
+
+    def get_object(self, queryset=None):
+        return Location.objects.filter(pk=self.kwargs['ip_address']).first()
 
     def list(self, request, *args, **kwargs):
         """
