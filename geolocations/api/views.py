@@ -35,7 +35,7 @@ class LocationViewSet(
     serializer_class = LocationSerializer
     queryset = Location.objects.all()
     lookup_field = "ip_address"
-    permission_classes = [AllowAny]
+    permission_classes = [IsAuthenticated]
 
     def get_object(self, queryset=None):
         return Location.objects.filter(pk=self.kwargs['ip_address']).first()
@@ -76,8 +76,8 @@ class LocationViewSet(
 
 
 class AddLocationResponse(APIView):
-    permission_classes = [AllowAny]
-    # serializer_class = LocationSerializer
+    permission_classes = [IsAuthenticated]
+    serializer_class = LocationSerializer
 
     def get(self, request, ip_address, *args, **kwargs):
         """
