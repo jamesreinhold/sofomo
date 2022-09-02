@@ -18,7 +18,7 @@ from rest_framework.views import APIView
 from rest_framework.viewsets import GenericViewSet
 
 from geolocations.models import Location
-from geolocations.utils import ContentRangeHeaderPagination, get_geolocation_data
+from geolocations.utils import get_geolocation_data
 
 from .serializers import LocationSerializer
 
@@ -82,7 +82,8 @@ class LocationViewSet(
 
 
 class AddLocationResponse(generics.RetrieveAPIView):
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
+    permission_classes = [AllowAny]
     serializer_class = LocationSerializer
 
 
@@ -91,16 +92,32 @@ class AddLocationResponse(generics.RetrieveAPIView):
         Add a new location - Manual
 
         This endpoint allows you to add a new location by passed IP address manually
+
+        ## 1 When wrong IP address is provided:
+
+        **Example Response**:
+
+                {
+                    "success": false,
+                    "error": {
+                        "code": 106,
+                        "type": "invalid_ip_address",
+                        "info": "The IP Address supplied is invalid."
+                    }
+                }
         """
+        ipstack_data = get_geolocation_data(ip_address)
+        if 'success' in ipstack_data:
+            return Response(ipstack_data, status=status.HTTP_400_BAD_REQUEST)
         if location_exist := Location.objects.filter(ip=ip_address).exists():
-            location = Location.objects.get(ip=ip_address)
-            serializer = LocationSerializer(location)
-            return Response(serializer.data)
+            # location = Location.objects.get(ip=ip_address)
+            serializer = LocationSerializer(Location.objects.get(ip=ip_address))
+            return Response(serializer.data, status=status.HTTP_200_OK)
         
         # location does not exist
-        location = Location.objects.create(**get_geolocation_data(ip_address))
+        location = Location.objects.create(**ipstack_data)
         serializer = LocationSerializer(location)
-        return Response(serializer.data)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 
 

@@ -3,7 +3,7 @@ Base settings to build other settings files upon.
 """
 
 from pathlib import Path
-
+from .apps import *
 import environ
 
 ROOT_DIR = Path(__file__).resolve(strict=True).parent.parent.parent
@@ -57,40 +57,6 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 ROOT_URLCONF = "config.urls"
 # https://docs.djangoproject.com/en/dev/ref/settings/#wsgi-application
 WSGI_APPLICATION = "config.wsgi.application"
-
-# APPS
-# ------------------------------------------------------------------------------
-DJANGO_APPS = [
-    "django.contrib.auth",
-    "django.contrib.contenttypes",
-    "django.contrib.sessions",
-    "django.contrib.sites",
-    "django.contrib.messages",
-    "django.contrib.staticfiles",
-    # "django.contrib.humanize", # Handy template tags
-    "django.contrib.admin",
-    "django.forms",
-]
-THIRD_PARTY_APPS = [
-    "crispy_forms",
-    "crispy_bootstrap5",
-    "allauth",
-    "drf_yasg",
-    "allauth.account",
-    "allauth.socialaccount",
-    "rest_framework",
-    "rest_framework.authtoken",
-    "corsheaders",
-    # "drf_spectacular",
-    'rest_framework_simplejwt',
-]
-
-LOCAL_APPS = [
-    "sofomo.users",
-    "geolocations"
-]
-# https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
-INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
 # MIGRATIONS
 # ------------------------------------------------------------------------------
@@ -272,7 +238,7 @@ ACCOUNT_AUTHENTICATION_METHOD = "username"
 # https://django-allauth.readthedocs.io/en/latest/configuration.html
 ACCOUNT_EMAIL_REQUIRED = True
 # https://django-allauth.readthedocs.io/en/latest/configuration.html
-ACCOUNT_EMAIL_VERIFICATION = "mandatory"
+ACCOUNT_EMAIL_VERIFICATION = "optional"
 # https://django-allauth.readthedocs.io/en/latest/configuration.html
 ACCOUNT_ADAPTER = "sofomo.users.adapters.AccountAdapter"
 # https://django-allauth.readthedocs.io/en/latest/forms.html
@@ -316,5 +282,3 @@ SPECTACULAR_SETTINGS = {
 
 
 IPSTACK_API_KEY = "bfbcea0d5266157d1edd3f150f1c666f"
-
-ACCOUNT_EMAIL_VERIFICATION = "optional"

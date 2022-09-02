@@ -19,9 +19,7 @@ def get_geolocation_data(ip_address:str="37.30.100.73")->dict:
     url = f"http://api.ipstack.com/{ip_address}?access_key={API_KEY}"
     
     return requests.get(url).json()
-    # if response.status_code == 200:
-    #     response.json()
-    # return "Error"
+    
     
 
 
