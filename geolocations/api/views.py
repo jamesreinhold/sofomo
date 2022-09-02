@@ -35,6 +35,46 @@ class LocationViewSet(
     Create a Location (JSON)
 
     This endpoint allows you to create a new location by passing IP as body
+
+    **Example Response:**
+
+        {
+            "id": "926bcd4b-a93d-4304-97cf-0748712c8d6f",
+            "ip": "37.249.212.228",
+            "type": "ipv4",
+            "continent_code": "EU",
+            "continent_name": "Europe",
+            "country_code": "PL",
+            "country_name": "Poland",
+            "region_code": "WP",
+            "region_name": "Greater Poland",
+            "city": "Poznań",
+            "zip": "60-001",
+            "latitude": "52.41360092163086",
+            "longitude": "16.837390899658203",
+            "location": {
+                "geoname_id": 3088171,
+                "capital": "Warsaw",
+                "languages": [
+                {
+                    "code": "pl",
+                    "name": "Polish",
+                    "native": "Polski"
+                }
+                ],
+                "country_flag": "https://assets.ipstack.com/flags/pl.svg",
+                "country_flag_emoji": "🇵🇱",
+                "country_flag_emoji_unicode": "U+1F1F5 U+1F1F1",
+                "calling_code": "48",
+                "is_eu": true
+            },
+            "time_zone": null,
+            "currency": null,
+            "connection": null,
+            "security": null,
+            "created_at": "2022-09-02T17:10:06.773217+02:00",
+            "updated_at": "2022-09-02T17:10:06.774198+02:00"
+        }
     """
     serializer_class = LocationSerializer
     queryset = Location.objects.all()
@@ -44,7 +84,7 @@ class LocationViewSet(
     pagination_class = PageNumberPagination
 
     def get_object(self, queryset=None):
-        return Location.objects.filter(pk=self.kwargs['ip_address']).first()
+        return Location.objects.filter(ip=self.kwargs['ip_address']).first()
 
     def list(self, request, *args, **kwargs):
         """

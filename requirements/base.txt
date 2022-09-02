@@ -24,3 +24,4 @@ drf-spectacular==0.23.1  # https://github.com/tfranzel/drf-spectacular
 djangorestframework-simplejwt==5.2.0
 drf-yasg
 django-ipware==3.0.2
+drf-friendly-errors==0.14 # https://github.com/FutureMind/drf-friendly-errors
