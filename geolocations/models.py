@@ -24,6 +24,61 @@ class Location(models.Model):
             verbose_name=_("IP Address"),
             help_text=_("The IP Address of the user at the time of creating record.")
         )
+
+    type = models.CharField(
+        **NULL_AND_BLANK,
+        max_length=50
+    )
+
+    continent_code = models.CharField(
+        **NULL_AND_BLANK,
+        max_length=50
+    )
+
+    continent_name = models.CharField(
+        **NULL_AND_BLANK,
+        max_length=50
+    )
+
+    country_code = models.CharField(
+        **NULL_AND_BLANK,
+        max_length=50
+    )
+
+    country_name = models.CharField(
+        **NULL_AND_BLANK,
+        max_length=50
+    )
+
+    region_code = models.CharField(
+        **NULL_AND_BLANK,
+        max_length=50
+    )
+
+    region_name = models.CharField(
+        **NULL_AND_BLANK,
+        max_length=50
+    )
+
+    city = models.CharField(
+        **NULL_AND_BLANK,
+        max_length=50
+    )
+
+    zip = models.CharField(
+        **NULL_AND_BLANK,
+        max_length=50
+    )
+
+    latitude = models.CharField(
+        **NULL_AND_BLANK,
+        max_length=50
+    )
+
+    longitude = models.CharField(
+        **NULL_AND_BLANK,
+        max_length=50
+    )
     
     location = models.JSONField(
         default=None,
