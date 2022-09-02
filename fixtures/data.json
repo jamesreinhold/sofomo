@@ -703,8 +703,25 @@
     }
 },
 {
+    "model": "users.user",
+    "pk": 2,
+    "fields": {
+        "password": "argon2$argon2id$v=19$m=102400,t=2,p=8$c3lsZkI4b1hKQ0ZUOWlEOFRyc2JSVg$OyVcbKgLVrf+gFk2zmMuWcKKchtTYS5XOzDCikJalg4",
+        "last_login": null,
+        "is_superuser": true,
+        "username": "admin",
+        "email": "admin@sofomo.com",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2022-09-02T15:34:06.980Z",
+        "name": "",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
     "model": "geolocations.location",
-    "pk": "19c14be9-895d-413d-ac7b-31ef42eb46fe",
+    "pk": "1c30421f-8d85-4372-8bf2-eb6288b10a22",
     "fields": {
         "ip": "127.0.0.1",
         "type": "ipv4",
@@ -732,26 +749,26 @@
         "currency": null,
         "connection": null,
         "security": null,
-        "created_at": "2022-09-02T13:36:04.247Z",
-        "updated_at": "2022-09-02T13:36:04.248Z"
+        "created_at": "2022-09-02T15:31:03.922Z",
+        "updated_at": "2022-09-02T15:31:03.923Z"
     }
 },
 {
     "model": "geolocations.location",
-    "pk": "fdc5f6a0-ee2a-4bdc-a109-c0666cd4d6cd",
+    "pk": "c2fd65c6-308e-48b1-80aa-3af605ac0bd8",
     "fields": {
-        "ip": "37.30.100.73",
+        "ip": "37.249.212.228",
         "type": "ipv4",
         "continent_code": "EU",
         "continent_name": "Europe",
         "country_code": "PL",
         "country_name": "Poland",
-        "region_code": "MZ",
-        "region_name": "Mazovia",
-        "city": "Mokotów",
-        "zip": "02-674",
-        "latitude": "52.18048095703125",
-        "longitude": "20.99588966369629",
+        "region_code": "WP",
+        "region_name": "Greater Poland",
+        "city": "Poznań",
+        "zip": "60-001",
+        "latitude": "52.41360092163086",
+        "longitude": "16.837390899658203",
         "location": {
             "is_eu": true,
             "capital": "Warsaw",
@@ -762,7 +779,7 @@
                     "native": "Polski"
                 }
             ],
-            "geoname_id": 764484,
+            "geoname_id": 3088171,
             "calling_code": "48",
             "country_flag": "https://assets.ipstack.com/flags/pl.svg",
             "country_flag_emoji": "🇵🇱",
@@ -772,8 +789,8 @@
         "currency": null,
         "connection": null,
         "security": null,
-        "created_at": "2022-09-02T12:28:42.193Z",
-        "updated_at": "2022-09-02T12:28:42.193Z"
+        "created_at": "2022-09-02T15:31:30.791Z",
+        "updated_at": "2022-09-02T15:31:30.791Z"
     }
 }
 ]
