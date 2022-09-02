@@ -18,6 +18,7 @@ class Location(models.Model):
             Mandatory, unless a new instance to create is given."""
         )
     )
+    
     ip = models.GenericIPAddressField(
             editable=False,
             **NULL_AND_BLANK,
