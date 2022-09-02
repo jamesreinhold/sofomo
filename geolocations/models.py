@@ -18,7 +18,7 @@ class Location(models.Model):
             Mandatory, unless a new instance to create is given."""
         )
     )
-    ip_address = models.GenericIPAddressField(
+    ip = models.GenericIPAddressField(
             editable=False,
             **NULL_AND_BLANK,
             verbose_name=_("IP Address"),
@@ -136,4 +136,4 @@ class Location(models.Model):
     #Methods
 
     def __str__(self):
-        return self.ip_address
+        return self.ip

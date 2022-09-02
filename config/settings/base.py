@@ -75,12 +75,13 @@ THIRD_PARTY_APPS = [
     "crispy_forms",
     "crispy_bootstrap5",
     "allauth",
+    "drf_yasg",
     "allauth.account",
     "allauth.socialaccount",
     "rest_framework",
     "rest_framework.authtoken",
     "corsheaders",
-    "drf_spectacular",
+    # "drf_spectacular",
     'rest_framework_simplejwt',
 ]
 
