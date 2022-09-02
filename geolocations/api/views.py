@@ -173,12 +173,15 @@ class AutomaticAddLocationResponse(generics.RetrieveAPIView):
         This endpoint allows you to add a new location by passed IP address automatically.
         """
         client_ip, is_routable = get_client_ip(request)
+        ipstack_data = get_geolocation_data(client_ip)
+        if 'success' in ipstack_data:
+            return Response(ipstack_data, status=status.HTTP_400_BAD_REQUEST)
         if location_exist := Location.objects.filter(ip=client_ip).exists():
-            location = Location.objects.get(ip=client_ip)
-            serializer = LocationSerializer(location)
-            return Response(serializer.data)
+            # location = Location.objects.get(ip=ip_address)
+            serializer = LocationSerializer(Location.objects.get(ip=client_ip))
+            return Response(serializer.data, status=status.HTTP_200_OK)
         
         # location does not exist
-        location = Location.objects.create(**get_geolocation_data(client_ip))
+        location = Location.objects.create(**ipstack_data)
         serializer = LocationSerializer(location)
-        return Response(serializer.data)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
