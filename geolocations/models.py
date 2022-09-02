@@ -27,82 +27,98 @@ class Location(models.Model):
 
     type = models.CharField(
         **NULL_AND_BLANK,
-        max_length=50
+        max_length=50,
+        editable=False,
     )
 
     continent_code = models.CharField(
         **NULL_AND_BLANK,
-        max_length=50
+        max_length=50,
+        editable=False,
     )
 
     continent_name = models.CharField(
         **NULL_AND_BLANK,
+        editable=False,
         max_length=50
     )
 
     country_code = models.CharField(
         **NULL_AND_BLANK,
+        editable=False,
         max_length=50
     )
 
     country_name = models.CharField(
         **NULL_AND_BLANK,
+        editable=False,
         max_length=50
     )
 
     region_code = models.CharField(
         **NULL_AND_BLANK,
+        editable=False,
         max_length=50
     )
 
     region_name = models.CharField(
         **NULL_AND_BLANK,
+        editable=False,
         max_length=50
     )
 
     city = models.CharField(
         **NULL_AND_BLANK,
+        editable=False,
         max_length=50
     )
 
     zip = models.CharField(
         **NULL_AND_BLANK,
+        editable=False,
         max_length=50
     )
 
     latitude = models.CharField(
         **NULL_AND_BLANK,
+        editable=False,
         max_length=50
     )
 
     longitude = models.CharField(
         **NULL_AND_BLANK,
+        editable=False,
         max_length=50
     )
     
     location = models.JSONField(
         default=None,
+        editable=False,
         null=True,
     )
 
     time_zone = models.JSONField(
         default=None,
+        editable=False,
         null=True,
     )
 
     currency = models.JSONField(
         default=None,
+        editable=False,
         null=True,
     )
 
     connection = models.JSONField(
         default=None,
+        editable=False,
         null=True,
     )
 
 
     security = models.JSONField(
         default=None,
+        editable=False,
         null=True,
     )
 

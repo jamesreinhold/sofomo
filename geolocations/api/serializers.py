@@ -8,7 +8,8 @@ class LocationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Location
         fields = "__all__"
+        read_only_fields = ()
     
     def create(self, validated_data):
-        
+
         return super().create(validated_data)
