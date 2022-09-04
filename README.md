@@ -6,6 +6,12 @@ Backend Test Project
 
 License: MIT
 
+## Test account
+
+- Username: sofomo
+- Password: password2022
+
+
 ## Basic Commands
 
 ### Setting Up Your Users
